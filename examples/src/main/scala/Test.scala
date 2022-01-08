@@ -30,7 +30,8 @@ object api:
       com.indoorvivants.cloudflare.cloudflareWorkersTypes.KVNamespace
     ]
     // Well I can't actually make it 400..
-    def badRequest(msg: String) = global.Response(msg)
+    def badRequest(msg: String) =
+      global.Response(msg, ResponseInit().setStatus(400))
     def ok(msg: String) = global.Response(msg)
 
     val Key = "value"

@@ -1,5 +1,5 @@
 Global / onChangedBuildSource := ReloadOnSourceChanges
-import commandmatrix.extra._
+import commandmatrix.extra.*
 
 lazy val Versions = new {
   val Scala3 = "3.1.0"
@@ -56,3 +56,5 @@ inThisBuild(
     )
   )
 )
+
+ThisBuild / concurrentRestrictions += Tags.limit(ScalablyTypedTag, 1)
