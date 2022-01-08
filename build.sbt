@@ -16,7 +16,12 @@ lazy val examples = projectMatrix
   .dependsOn(sources)
   .enablePlugins(ScalaJSPlugin)
   .settings(
-    scalaJSLinkerConfig ~= { conf => conf.withModuleKind(ModuleKind.ESModule) }
+    scalaJSLinkerConfig ~= { conf =>
+      conf.withModuleKind(ModuleKind.ESModule)
+    },
+    Test / scalaJSLinkerConfig ~= { conf =>
+      conf.withModuleKind(ModuleKind.CommonJSModule)
+    }
   )
 
 lazy val sources = projectMatrix
