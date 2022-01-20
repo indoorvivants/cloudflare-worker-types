@@ -5,6 +5,8 @@ lazy val Versions = new {
   val Scala3 = "3.1.0"
 
   val scala = List(Scala3)
+
+  val cloudflareWorkers = "3.3.0"
 }
 
 lazy val examples = projectMatrix
@@ -13,8 +15,9 @@ lazy val examples = projectMatrix
     Versions.scala,
     List(VirtualAxis.js)
   )
-  .dependsOn(sources)
+  .dependsOn(cloudflare)
   .enablePlugins(ScalaJSPlugin)
+  .settings(noPublish)
   .settings(
     scalaJSLinkerConfig ~= { conf =>
       conf.withModuleKind(ModuleKind.ESModule)
@@ -24,7 +27,7 @@ lazy val examples = projectMatrix
     }
   )
 
-lazy val sources = projectMatrix
+lazy val cloudflare = projectMatrix
   .in(file("sources"))
   .allVariations(
     Versions.scala,
@@ -32,9 +35,10 @@ lazy val sources = projectMatrix
   )
   .enablePlugins(ScalablyTypedConverterGenSourcePlugin)
   .settings(
-    moduleName := "cloudflare-functions",
+    organization := "com.indoorvivants.cloudflare",
+    moduleName := "worker-types",
     Compile / npmDependencies ++= Seq(
-      "@cloudflare/workers-types" -> "3.3.0"
+      "@cloudflare/workers-types" -> Versions.cloudflareWorkers
     ),
     stOutputPackage := "com.indoorvivants.cloudflare",
     stMinimize := Selection.AllExcept("@cloudflare/workers-types")
@@ -45,7 +49,7 @@ inThisBuild(
     organization := "com.indoorvivants",
     organizationName := "Anton Sviridov",
     homepage := Some(
-      url("https://github.com/indoorvivants/cloudflare-functions")
+      url("https://github.com/indoorvivants/scalajs-serverless")
     ),
     startYear := Some(2022),
     licenses := List(
@@ -63,3 +67,8 @@ inThisBuild(
 )
 
 ThisBuild / concurrentRestrictions += Tags.limit(ScalablyTypedTag, 1)
+
+val noPublish = Seq(
+  publish / skip := true,
+  publishLocal / skip := true
+)
