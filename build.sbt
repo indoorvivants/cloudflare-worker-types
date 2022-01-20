@@ -9,6 +9,12 @@ lazy val Versions = new {
   val cloudflareWorkers = "3.3.0"
 }
 
+lazy val root = project
+  .in(file("."))
+  .aggregate(examples.projectRefs*)
+  .aggregate(cloudflare.projectRefs*)
+  .settings(noPublish)
+
 lazy val examples = projectMatrix
   .in(file("examples"))
   .allVariations(

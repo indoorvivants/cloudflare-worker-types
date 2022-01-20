@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: ["*"]
 
-
 jobs:
   build:
     name: Tests
@@ -15,10 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: coursier/cache-action@v3      
-      - uses: olafurpg/setup-scala@v13
-        with:
-          java-version: adopt@1.8
       
       - name: Tests
         run: sbt test publishLocal
@@ -32,11 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: coursier/cache-action@v3      
-      - uses: olafurpg/setup-scala@v10
-        with:
-          java-version: adopt@1.8
+
       - run: git fetch --unshallow
+
       - name: Publish ${{ github.ref }}
         run: sbt ci-release
         env:
