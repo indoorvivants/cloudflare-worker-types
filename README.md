@@ -1,5 +1,7 @@
 # Cloudflare workers types
 
+[![worker-types Scala version support](https://index.scala-lang.org/indoorvivants/cloudflare-worker-types/worker-types/latest-by-scala-version.svg?targetType=Js)](https://index.scala-lang.org/indoorvivants/cloudflare-worker-types/worker-types)
+
 This is a very basic Scala.js 3 facade for [Cloudflare Workers API](https://github.com/cloudflare/workers-types).
 
 It's generated using the amazing [ScalablyTyped](https://scalablytyped.org/docs/readme.html) plugin, and published to Maven Central.
