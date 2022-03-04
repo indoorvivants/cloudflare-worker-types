@@ -47,7 +47,12 @@ lazy val cloudflare = projectMatrix
       "@cloudflare/workers-types" -> Versions.cloudflareWorkers
     ),
     stOutputPackage := "com.indoorvivants.cloudflare",
-    stMinimize := Selection.AllExcept("@cloudflare/workers-types")
+    stMinimize := Selection.AllExcept("@cloudflare/workers-types"),
+    Compile / packageSrc / mappings ++= {
+      val base = (Compile / sourceManaged).value
+      val files = (Compile / managedSources).value
+      files.map { f => (f, f.relativeTo(base).get.getPath) }
+    }
   )
 
 inThisBuild(
