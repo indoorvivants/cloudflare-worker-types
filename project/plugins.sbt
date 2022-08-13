@@ -1,4 +1,4 @@
-addSbtPlugin("com.eed3si9n" % "sbt-projectmatrix" % "0.8.0")
+addSbtPlugin("com.eed3si9n" % "sbt-projectmatrix" % "0.9.0")
 addSbtPlugin("com.geirsson" % "sbt-ci-release" % "1.5.7")
 addSbtPlugin("com.indoorvivants" % "sbt-commandmatrix" % "0.0.5")
 addSbtPlugin("org.scalablytyped.converter" % "sbt-converter" % "1.0.0-beta37")
