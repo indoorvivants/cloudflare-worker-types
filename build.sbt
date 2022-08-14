@@ -2,7 +2,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 import commandmatrix.extra.*
 
 lazy val Versions = new {
-  val Scala3 = "3.1.0"
+  val Scala3 = "3.1.3"
 
   val scala = List(Scala3)
 
