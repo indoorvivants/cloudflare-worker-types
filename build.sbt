@@ -2,11 +2,11 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 import commandmatrix.extra.*
 
 lazy val Versions = new {
-  val Scala3 = "3.2.2"
+  val Scala3 = "3.3.7"
 
   val scala = List(Scala3)
 
-  val cloudflareWorkers = "3.3.0"
+  val cloudflareWorkers = "4.20260329.1"
 }
 
 lazy val root = project
